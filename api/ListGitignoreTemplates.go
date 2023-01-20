@@ -1,6 +1,8 @@
 package api
 
-import "github.com/cli/go-gh"
+import (
+	"github.com/cli/go-gh"
+)
 
 // List all the gitignore templates from the GitHub API
 func ListGitignoreTemplates() ([]string, error) {
@@ -16,7 +18,7 @@ func ListGitignoreTemplates() ([]string, error) {
 
 	// Get the list of gitignore templates
 	gitignoreList := []string{}
-	err = client.Get(endpoint, gitignoreList)
+	err = client.Get(endpoint, &gitignoreList)
 	if err != nil {
 		return nil, err
 	}
