@@ -16,7 +16,7 @@ func GetGitignoreTemplate(name string) (GitignoreTemplateResponse, error) {
 
 	// Get the gitignore template
 	gitignore := GitignoreTemplateResponse{}
-	err = client.Get(endpoint, gitignore)
+	err = client.Get(endpoint, &gitignore)
 	if err != nil {
 		return GitignoreTemplateResponse{}, err
 	}
