@@ -52,7 +52,7 @@ gh gitignore <command> --help
 
 #### Aliases
 
-`new`, `init`, `clone`
+`new`, `add`, `init`, `clone`
 
 #### Usage
 
@@ -72,9 +72,10 @@ gh gitignore create Rust
 
 #### Flags
 
-| Flag         | Description                          |
-| ------------ | ------------------------------------ |
-| `--dest, -d` | Destination of the `.gitignore` file |
+| Flag              | Description                              |
+| ----------------- | ---------------------------------------- |
+| `--dest, -d`      | Destination of the `.gitignore` file     |
+| `--overwrite, -o` | Overwrite the existing `.gitignore` file |
 
 ### `list`
 

@@ -24,7 +24,7 @@ var (
 // createCmd represents the create command
 var createCmd = &cobra.Command{
 	Use:     "create",
-	Aliases: []string{"new", "init", "clone"},
+	Aliases: []string{"new", "add", "init", "clone"},
 	Short:   "Create a gitignore file",
 	Long:    `Create a gitignore file for your project`,
 	Run: func(cmd *cobra.Command, args []string) {
