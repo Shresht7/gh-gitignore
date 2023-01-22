@@ -27,18 +27,33 @@ var createCmd = &cobra.Command{
 	Long:    `Create a gitignore file for your project`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		//	Get the gitignore template name
-		name := args[0]
+		// Contents of the gitignore file
+		var contents []byte
 
-		//	Get the gitignore template
-		gitignore, err := api.GetGitignoreTemplate(name)
+		// If the gitignore file already exists, read its contents
+		contents, _ = os.ReadFile(dest)
+
+		// Iterate over the given arguments and append the contents of the gitignore files
+		for _, name := range args {
+
+			//	Get the gitignore template
+			gitignore, err := api.GetGitignoreTemplate(name)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+
+			//	Append the gitignore template to the contents
+			contents = append(contents, []byte("\n"+gitignore.Source+"\n")...)
+
+		}
+
+		// Write to file
+		err := os.WriteFile(dest, contents, 0644)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-
-		//	Write license file
-		os.WriteFile(dest, []byte(gitignore.Source), 0644)
 
 	},
 }
