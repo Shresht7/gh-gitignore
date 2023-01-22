@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/Shresht7/gh-gitignore/api"
+	"github.com/Shresht7/gh-gitignore/helpers"
 )
 
 //	==============
@@ -37,8 +38,21 @@ var createCmd = &cobra.Command{
 			contents, _ = os.ReadFile(dest)
 		}
 
+		//	Get the gitignore templates
+		templates, err := api.ListGitignoreTemplates()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
 		// Iterate over the given arguments and append the contents of the gitignore files
 		for _, name := range args {
+
+			// Check if the provided gitignore template name is invalid
+			if !helpers.Contains(templates, name) {
+				helpers.HandleInvalidTemplate(name, templates)
+				continue // Skip the iteration
+			}
 
 			//	Get the gitignore template
 			gitignore, err := api.GetGitignoreTemplate(name)
@@ -56,7 +70,7 @@ var createCmd = &cobra.Command{
 		}
 
 		// Write to file
-		err := os.WriteFile(dest, contents, 0644)
+		err = os.WriteFile(dest, contents, 0644)
 		if err != nil {
 			fmt.Println(err)
 			return
