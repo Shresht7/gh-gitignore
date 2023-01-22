@@ -15,9 +15,10 @@ import (
 
 // createCmd represents the create command
 var createCmd = &cobra.Command{
-	Use:   "create",
-	Short: "Create a gitignore file",
-	Long:  `Create a gitignore file for your project`,
+	Use:     "create",
+	Aliases: []string{"new", "init", "clone"},
+	Short:   "Create a gitignore file",
+	Long:    `Create a gitignore file for your project`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		//	Get the gitignore template name
