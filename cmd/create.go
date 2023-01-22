@@ -13,6 +13,12 @@ import (
 //	CREATE COMMAND
 //	==============
 
+// Flags
+var (
+	// Destination of the gitignore file
+	dest string
+)
+
 // createCmd represents the create command
 var createCmd = &cobra.Command{
 	Use:     "create",
@@ -31,9 +37,6 @@ var createCmd = &cobra.Command{
 			return
 		}
 
-		//	Determine destination
-		var dest string = ".gitignore"
-
 		//	Write license file
 		os.WriteFile(dest, []byte(gitignore.Source), 0644)
 
@@ -43,4 +46,7 @@ var createCmd = &cobra.Command{
 func init() {
 	//	Add create command
 	rootCmd.AddCommand(createCmd)
+
+	//	Add flags
+	createCmd.Flags().StringVarP(&dest, "dest", "d", ".gitignore", "Destination of the gitignore file")
 }
