@@ -21,14 +21,20 @@ var viewCmd = &cobra.Command{
 	Example: `gh gitignore view Node`,
 	Run: func(cmd *cobra.Command, args []string) {
 
+		//	Get the gitignore templates
+		templates, err := api.ListGitignoreTemplates()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
 		// Iterate over all provided gitignore template names
 		for _, name := range args {
 
-			// Check if the provided gitignore template name is valid
-			if !helpers.IsValidTemplate(name) {
-				fmt.Printf("Invalid gitignore template name: %s\n", name)
-				fmt.Println("\nUse the \"list\" command to view all available gitignore templates.")
-				continue
+			// Check if the provided gitignore template name is invalid
+			if !helpers.Contains(templates, name) {
+				handleInvalidTemplate(name, templates)
+				continue // Skip the iteration
 			}
 
 			//	Get the gitignore template
@@ -39,10 +45,28 @@ var viewCmd = &cobra.Command{
 			}
 
 			//	Print the gitignore template
-			fmt.Println(gitignore.Source)
+			fmt.Println(gitignore.Source + "\n")
 		}
 
 	},
+}
+
+// Handle invalid gitignore template name case
+func handleInvalidTemplate(name string, templates []string) {
+	fmt.Printf("Invalid gitignore template name: %s\n", name)
+
+	// Get suggestions for the given name
+	suggestions := helpers.GetSuggestions(name, templates)
+
+	// Print suggestions, if any
+	if len(suggestions) > 0 {
+		fmt.Println("\nDid you mean:")
+		for _, suggestion := range suggestions {
+			fmt.Println("\t" + suggestion)
+		}
+	}
+
+	fmt.Println("\nUse the \"list\" command to view all available gitignore templates.")
 }
 
 func init() {
