@@ -17,8 +17,9 @@ var rootCmd = &cobra.Command{
 	Long: `Generate .gitignore files for your projects using GitHub's gitignore template API.
 	
 Examples:
-	gh gitignore create node
-	gh gitignore create node, python
+	gh gitignore list
+	gh gitignore create Go
+	gh gitignore view Node > .gitignore
 `,
 }
 
