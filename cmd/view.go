@@ -3,9 +3,10 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/spf13/cobra"
+
 	"github.com/Shresht7/gh-gitignore/api"
 	"github.com/Shresht7/gh-gitignore/helpers"
-	"github.com/spf13/cobra"
 )
 
 //	============
