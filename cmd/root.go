@@ -19,7 +19,7 @@ var rootCmd = &cobra.Command{
 Examples:
 	gh gitignore list
 	gh gitignore create Go
-	gh gitignore view Node > .gitignore
+	gh gitignore view Node
 `,
 }
 
