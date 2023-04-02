@@ -86,7 +86,7 @@ var createCmd = &cobra.Command{
 
 func init() {
 	//	Add create command
-	rootCmd.AddCommand(createCmd)
+	RootCmd.AddCommand(createCmd)
 
 	//	Add flags
 	createCmd.Flags().StringVarP(&dest, "dest", "d", ".gitignore", "Destination of the gitignore file")
