@@ -19,7 +19,10 @@ var viewCmd = &cobra.Command{
 	Aliases: []string{"show", "get"},
 	Short:   "View a gitignore file",
 	Long:    `View a gitignore file in the terminal. Use the "list" command to view all available gitignore templates.`,
-	Example: `gh gitignore view Node`,
+	Example: helpers.ListExamples([]string{
+		"gh gitignore view Go",
+		"gh gitignore view Go Python",
+	}),
 	Run: func(cmd *cobra.Command, args []string) {
 
 		//	Get the gitignore templates
