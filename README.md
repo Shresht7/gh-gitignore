@@ -34,83 +34,119 @@ To create a gitignore file:
 gh gitignore create Node
 ```
 
+![Usage Demonstration](docs/demo.gif)
+
+<div align="right">
+
+[⬆️ Back to top][top]
+
+</div>
+
 ## ⌨️ Commands
 
-### `help`
-
-#### Usage
-
-Use the `help` command to explore the cli.
-
-```sh
-gh gitignore help
-gh gitignore help <command>
-gh gitignore <command> --help
-```
 
 ### `create`
 
-#### Aliases
+Create a gitignore file
+
+#### Alias
 
 `new`, `add`, `init`, `clone`
 
 #### Usage
 
-To generate a `.gitignore` file use:
-
 ```sh
-gh gitignore create <language>
-```
-
-#### Example
-
-```sh
-gh gitignore create Go
-gh gitignore create Node
-gh gitignore create Rust
+gh-gitignore create [flags]
 ```
 
 #### Flags
 
-| Flag              | Description                              |
-| ----------------- | ---------------------------------------- |
-| `--dest, -d`      | Destination of the `.gitignore` file     |
-| `--overwrite, -o` | Overwrite the existing `.gitignore` file |
+| Flag              | Type     | Description                       | Default    |
+| ----------------- | -------- | --------------------------------- | ---------- |
+| `--dest, -d`      | `string` | Destination of the gitignore file | .gitignore |
+| `--overwrite, -o` | `bool`   | Overwrite the gitignore file      | false      |
+
+#### Examples
+
+```sh
+  gh gitignore create Go
+  gh gitignore create Go Python
+  gh gitignore create Go Python -d .gitignore
+```
+
+<div align="right">
+
+[⬆️ Back to top][top]
+
+</div>
+
 
 ### `list`
 
+Lists all gitignore templates
+
+
+
 #### Usage
 
-To get a list of `.gitignore` templates use:
+```sh
+gh-gitignore list
+```
+
+
+
+#### Examples
 
 ```sh
-gh gitignore list
+  gh gitignore list
 ```
+
+<div align="right">
+
+[⬆️ Back to top][top]
+
+</div>
+
 
 ### `view`
 
-#### Aliases
+View a gitignore file
+
+#### Alias
 
 `show`, `get`
 
 #### Usage
 
-To view a particular `.gitignore` template use:
-
 ```sh
-gh gitignore view <language>
+gh-gitignore view
 ```
 
-#### Example
+
+
+#### Examples
 
 ```sh
-gh gitignore view Go
-gh gitignore view Node
-gh gitignore view Rust
+  gh gitignore view Go
+  gh gitignore view Go Python
 ```
+
+<div align="right">
+
+[⬆️ Back to top][top]
+
+</div>
+
+
 
 ---
 
-## 📄 License
+## 📜 License
 
-[MIT License](./LICENSE)
+This software is licensed under the [MIT License](). See the [LICENSE](./LICENSE) file for details.
+
+
+
+
+
+[top]: #gh-gitignore
