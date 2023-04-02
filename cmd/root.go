@@ -3,6 +3,7 @@ package cmd
 import (
 	"os"
 
+	"github.com/Shresht7/gh-gitignore/helpers"
 	"github.com/spf13/cobra"
 )
 
@@ -12,16 +13,20 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "gh-gitignore",
-	Short: "Generate .gitignore files for your projects",
-	Long: `Generate .gitignore files for your projects using GitHub's gitignore template API.
-	
-Examples:
-	gh gitignore list
-	gh gitignore create Go
-	gh gitignore view Node
-`,
+	Use:     "gh-gitignore",
+	Version: "0.2.0",
+	Short:   "Generate .gitignore files for your projects",
+	Long:    `Generate .gitignore files for your projects using GitHub's gitignore template API.`,
+	Example: helpers.ListExamples([]string{
+		"gh gitignore list",
+		"gh gitignore view Node",
+		"gh gitignore create Rust",
+	}),
 }
+
+// -------
+// EXECUTE
+// -------
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
@@ -31,6 +36,10 @@ func Execute() {
 		os.Exit(1)
 	}
 }
+
+// ----
+// INIT
+// ----
 
 func init() {
 	// Here you will define your flags and configuration settings.
