@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/Shresht7/gh-gitignore/api"
+	"github.com/Shresht7/gh-gitignore/helpers"
 )
 
 //	============
@@ -17,6 +18,9 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Lists all gitignore templates",
 	Long:  `List all the available gitignore templates`,
+	Example: helpers.ListExamples([]string{
+		"gh gitignore list",
+	}),
 	Run: func(cmd *cobra.Command, args []string) {
 
 		//	Get list of gitignore templates
@@ -27,16 +31,11 @@ var listCmd = &cobra.Command{
 		}
 
 		//	Print the list of gitignore templates
-		printList(gitignoreList)
+		for _, name := range gitignoreList {
+			fmt.Println(name)
+		}
 
 	},
-}
-
-// Print the list of licenses to the console
-func printList(gitignoreTemplates []string) {
-	for _, name := range gitignoreTemplates {
-		fmt.Println(name)
-	}
 }
 
 func init() {
