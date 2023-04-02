@@ -29,9 +29,9 @@ var createCmd = &cobra.Command{
 	Short:   "Create a gitignore file",
 	Long:    `Create a gitignore file for your project`,
 	Example: helpers.ListExamples([]string{
-		"gh gitignore create go",
-		"gh gitignore create go python",
-		"gh gitignore create go python -d .gitignore",
+		"gh gitignore create Go",
+		"gh gitignore create Go Python",
+		"gh gitignore create Go Python -d .gitignore",
 	}),
 	Run: func(cmd *cobra.Command, args []string) {
 
