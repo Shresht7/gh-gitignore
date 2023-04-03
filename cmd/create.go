@@ -14,14 +14,6 @@ import (
 //	CREATE COMMAND
 //	==============
 
-// Flags
-var (
-	// Destination of the gitignore file
-	dest string
-	// Boolean flag to overwrite the gitignore file
-	overwrite bool
-)
-
 // createCmd represents the create command
 var createCmd = &cobra.Command{
 	Use:     "create",
@@ -30,13 +22,17 @@ var createCmd = &cobra.Command{
 	Long:    `Create a gitignore file for your project`,
 	Example: helpers.ListExamples([]string{
 		"gh gitignore create Go",
-		"gh gitignore create Go Python",
+		"gh gitignore init Go Python",
 		"gh gitignore create Go Python -d .gitignore",
 	}),
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// Contents of the gitignore file
 		var contents []byte
+
+		// Get Flags
+		dest, _ := cmd.Flags().GetString("dest")
+		overwrite, _ := cmd.Flags().GetBool("overwrite")
 
 		// If the gitignore file already exists, read its contents
 		if !overwrite {
@@ -89,6 +85,6 @@ func init() {
 	RootCmd.AddCommand(createCmd)
 
 	//	Add flags
-	createCmd.Flags().StringVarP(&dest, "dest", "d", ".gitignore", "Destination of the gitignore file")
-	createCmd.Flags().BoolVarP(&overwrite, "overwrite", "o", false, "Overwrite the gitignore file")
+	createCmd.Flags().StringP("dest", "d", ".gitignore", "Destination of the gitignore file")
+	createCmd.Flags().BoolP("overwrite", "o", false, "Overwrite the gitignore file")
 }
