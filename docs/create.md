@@ -27,7 +27,7 @@ gh-gitignore create [flags]
 
 ```
   gh gitignore create Go
-  gh gitignore create Go Python
+  gh gitignore init Go Python
   gh gitignore create Go Python -d .gitignore
 ```
 
