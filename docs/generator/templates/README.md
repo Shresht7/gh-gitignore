@@ -40,7 +40,7 @@ gh gitignore create Node
 
 ## ⌨️ Commands
 
-{{ range . }}
+{{ range .Commands }}
 {{- template "Command" . -}}
 {{ end }}
 
