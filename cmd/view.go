@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/spf13/cobra"
 
@@ -36,7 +37,7 @@ var viewCmd = &cobra.Command{
 		for _, name := range args {
 
 			// Check if the provided gitignore template name is invalid
-			if !helpers.Contains(templates, name) {
+			if !slices.Contains(templates, name) {
 				helpers.HandleInvalidTemplate(name, templates)
 				continue // Skip the iteration
 			}
