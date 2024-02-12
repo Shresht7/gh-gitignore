@@ -1,8 +1,6 @@
 module github.com/Shresht7/gh-gitignore
 
-go 1.21
-
-toolchain go1.21.4
+go 1.22
 
 require (
 	github.com/Shresht7/Scribe v0.0.0-20230331052318-69ae28065919
